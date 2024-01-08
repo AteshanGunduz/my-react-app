@@ -1,38 +1,145 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    font-size: 1.2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input:focus{
+    outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.the-products{
+    width: 15rem;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.filter-basket{
+    width: 86%;
+}
+
+.basket-page{
+    position: fixed;
+    top:1rem;
+    right:1rem;
+    padding: 1.4rem;
+    max-height: 90vh;
+    width: 30rem;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    overflow-y: auto;
+    text-align: center;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .purchase-products{  
+    width: 15rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .toggled-bg{
+    opacity: 0.5;
   }
-}
+
+  .last-confirm{
+    position: fixed;
+    top:1rem;
+    right:1rem;
+    padding: 1.4rem;
+    max-height: 90vh;
+    width: 30rem;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    overflow-y: auto;
+    text-align: center;
+  }
+
+  .payment-container{
+    position: fixed;
+    top:1rem;
+    right:1rem;
+    padding: 1.4rem;
+    max-height: 90vh;
+    width: 35rem;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    overflow-y: auto;
+    text-align: center;
+  }
+
+  .card{
+    color: white;
+    width: 80%;
+    height: 16rem;
+    background: rgb(50,49,49);
+   background: linear-gradient(0deg, rgba(50,49,49,1) 0%, rgba(152,152,152,1) 0%, rgba(17,16,16,1) 100%);
+   border-radius: 1rem;  
+   padding: 1rem;
+  }
+  
+  .the-card input{
+    width: 12rem;
+    height: 1rem;
+    margin: 0.4rem;
+    color: rgb(52, 52, 52);
+    padding: 0.1rem;
+    border: none;
+  }
+
+  .input-containers{
+    width: 13rem;
+    height: 2rem;
+    margin: 0.4rem;
+    border: 1px solid #ccc;
+    color: black;
+    padding: 0.1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  
+  .card-special{
+   width: 90%
+  }
+  
+  .card-back{
+    height: 16rem;
+    width: 80%;
+    background: rgb(94,94,94);
+    background: linear-gradient(0deg, rgba(94,94,94,1) 18%, rgba(17,16,16,1) 100%);
+    border-radius: 1rem;
+  }
+  
+  .card-black{
+    width: 80%;
+    height: 4rem;
+    background: black;
+  }
+  
+  .card-cvc{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    width: 60%;
+    height: 3rem;
+    background-color: #e5e5f7;
+  opacity: 0.9;
+  background-image:  linear-gradient(whitesmoke 2px, transparent 2px), linear-gradient(90deg, whitesmoke 2px, transparent 2px), linear-gradient(whitesmoke 1px, transparent 1px), linear-gradient(90deg, whitesmoke 1px, #e5e5f7 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    text-align: end;
+    margin-top: 1rem;
+  }
+
+ 
