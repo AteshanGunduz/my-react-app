@@ -142,4 +142,80 @@ input:focus{
     margin-top: 1rem;
   }
 
- 
+ @media(max-width: 520px){
+  .navbar{
+    height: 8rem;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search{
+    margin: 0;
+    padding: 0;
+  }
+
+  .filter-basket{
+    flex-direction: column;
+    position: relative;
+  }
+
+  .filter-items{
+    display: flex;
+    height: 10rem;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .basket-page{
+    width: 18rem;
+  }
+
+  .last-confirm{
+    width: 18rem;
+  }
+
+  .payment-container{
+    width: 18rem;
+  }
+
+  .card-inputs{
+    flex-direction: column;
+  }
+
+  .special-card-inputs{
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .card-special{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-special h2{
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-right: 2rem;
+  }
+
+  .card{
+    width: 100%;
+    height: 20rem;
+   
+  }
+
+  .card-back{
+    width: 100%; 
+  }
+
+  .number-card{
+    
+  }
+  
+
+ }

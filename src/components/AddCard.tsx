@@ -84,7 +84,7 @@ const AddCard = ({handleAddCard}: AddCardProps) => {
            <img src="/chip.png" alt="" width="50px"/>
            <img src="/ma_symbol.svg" alt="" width="90px" />
          </div>
-         <div>
+         <div className="number-card">
            <h2 className="text-xl font-bold mr-10">{formatCardNumber(cardNumber)} </h2>
          </div>
          <div className="card-special flex justify-between items-center">
@@ -106,7 +106,7 @@ const AddCard = ({handleAddCard}: AddCardProps) => {
       </div>
       )}
    
-      <div className="flex justify-evenly mt-4 p-2">
+      <div className="card-inputs flex justify-evenly mt-4 p-2">
         <div className="input-containers">
         <input type="text" value={accountName} placeholder=" Name your Card" onChange={(e)=>{setAccountName(e.target.value)}}/>
         </div>
@@ -125,7 +125,7 @@ const AddCard = ({handleAddCard}: AddCardProps) => {
         </div>
 
       </div>
-      <div className="flex justify-evenly">
+      <div className="special-card-inputs flex justify-evenly">
         <div className="input-containers">
         <input type="text" maxLength={5} value={valid} placeholder=" Valid Thru" onFocus={handleClickFront} onChange={(e)=>{setValid(e.target.value)}}/>
         </div>

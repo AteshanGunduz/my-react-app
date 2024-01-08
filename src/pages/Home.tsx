@@ -204,13 +204,13 @@ const Home = ({products, address}:HomeProps) => {
     <Outlet/>
       <div className={`flex flex-col items-center ${basketClass}`}>
           <div className="filter-basket flex justify-between m-10">
-              <div className="flex justift-start items-start ml-2">
-              <div className='rounded-lg border-solid border-2 border-orange-400 bg-white m-2'>
+              <div className="filter-items flex justift-start items-start ml-2">
+              <div className=' rounded-lg border-solid border-2 border-orange-400 bg-white m-2'>
             <input type="text" className=' m-1 pl-1 ' onChange={handleChange} placeholder='Search for products'/>
             </div>
               <p className='p-2 cursor-pointer font-semibold'  onClick={handleClick}>Filter 📅</p>
               {filter && (
-                  <div className="ml-2 flex flex-col justify-start items-start font-semibold p-1 gap-1">
+                  <div className=" ml-2 flex flex-col justify-start items-start font-semibold p-1 gap-1">
                     <button onClick={handleDefault}>Featured</button>
                     <button onClick={handleHigh}>High to Low</button>
                     <button onClick={handleLow}>Low to High</button>
