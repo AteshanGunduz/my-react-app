@@ -28,7 +28,7 @@ const ProductItem = ({product, handleCount}:ProductProps) => {
         
       <div className="flex flex-col justify-center items-center m-1 p-1 gap-1">
         <h3 className="font-semibold">{product.title}</h3>
-        <img src={product.images[index]} onClick={()=>handleImageClick()} width="210px"className="cursor-pointer"/>
+        <img src={product.images[index]} onClick={()=>handleImageClick()} width="210px"className="cursor-pointer hover:opacity-75"/>
         <p>{product.description}</p>
        </div>
         
@@ -42,7 +42,7 @@ const ProductItem = ({product, handleCount}:ProductProps) => {
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <button className="buy" onClick={()=>handleCount(amountValues, product.id)}>Add to Basket</button>
+        <button className="buy bg-blue-500 text-white p-2 rounded-lg font-semibold m-4 transition ease-in-out bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-orange-500 duration-100 ..." onClick={()=>handleCount(amountValues, product.id)}>Add to Basket</button>
       </div>
         
 
