@@ -1,6 +1,4 @@
-import { Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar';
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, useCallback } from 'react';
 import ProductItem from '../components/ProductItem';
 import Confirm from '../components/Confirm';
 import AddCard from '../components/AddCard';
@@ -94,8 +92,7 @@ const Home = ({products, address}:HomeProps) => {
       //Updates the count, finds the matching ids, if matching ids is not included previous create new array of them. Add amount to their objects
       //and update the price accordingly to that amount
 
-      const handleCount = (value: string, theId: number) => {
-        
+      const handleCount = useCallback((value: string, theId: number) => {
 
         const filteredProduct = pro.find((product) => theId === product.id);
         
@@ -117,7 +114,7 @@ const Home = ({products, address}:HomeProps) => {
       });
     }
 
-      };
+      },[pro, productsIn, count, price]);
 
       const addedTotal = price + 5
       
@@ -199,9 +196,7 @@ const Home = ({products, address}:HomeProps) => {
 
   return (
     <>
-    <Navbar />
     <section className='section '>
-    <Outlet/>
       <div className={`flex flex-col items-center ${basketClass}`}>
           <div className="filter-basket flex justify-between m-10">
               <div className="filter-items flex justift-start items-start ml-2">
@@ -225,9 +220,9 @@ const Home = ({products, address}:HomeProps) => {
          
         </div>
         <div className={`flex flex-wrap justify-center ${basketClass}`}>
-        {pro.map((product) => (
-        <ProductItem key={product.id} product={product} handleCount={handleCount}/>
-      ))}
+       
+        <ProductItem pro={pro} handleCount={handleCount}/>
+    
       </div>
       {basketToggle && (
       <div className="basket-page flex flex-col items-center gap-3">

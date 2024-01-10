@@ -14,6 +14,7 @@ type ConfirmProps = {
 
 
 const Confirm = ({handleConfirm, productsIn, price, addedTotal, address, handleAddCard, lastDigits}:ConfirmProps) => {
+     console.log("Confirm Rendered");
     const [spinToggle, setSpinToggle] = useState<boolean>(false)
 
     const handleAddClick = ()=>{

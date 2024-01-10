@@ -14,14 +14,14 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Routes>
-          <Route path="/" element={<Home products={products} address={address} />}>
-          <Route path="products" element={<Products />} />
-          <Route path="*" element={<Error />} />
-        </Route>
-    </Routes>
-  </BrowserRouter>
-  );
+    <Navbar />
+      <Routes>
+        <Route path="/" element={<Home products={products} address={address} />} />
+        <Route path="products" element={<Products />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;

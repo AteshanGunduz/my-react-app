@@ -6,6 +6,7 @@ type AddCardProps = {
 
 
 const AddCard = ({handleAddCard}: AddCardProps) => {
+  console.log("AddCard Rendered");
 
   const [cardNumber, setCardNumber] = useState("")
   const [name, setName] = useState("")
