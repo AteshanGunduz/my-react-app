@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Product1 } from "../pages/Home"
 import { Address } from "../pages/Home"
+import { useAddress, useCreateAddress } from "../services/queries"
+import { SubmitHandler, useForm } from "react-hook-form"
 
 type ConfirmProps = {
     handleConfirm:()=> void
@@ -8,35 +10,88 @@ type ConfirmProps = {
     productsIn: Product1[]
     price: number
     addedTotal: number
-    address: Address[]
     lastDigits: string
 }
 
 
-const Confirm = ({handleConfirm, productsIn, price, addedTotal, address, handleAddCard, lastDigits}:ConfirmProps) => {
+const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, lastDigits}:ConfirmProps) => {
      console.log("Confirm Rendered");
     const [spinToggle, setSpinToggle] = useState<boolean>(false)
+    const [addressPage, setAddressPage] = useState<boolean>(false)
 
     const handleAddClick = ()=>{
         handleAddCard("")
        }
 
-       const handleSpin = (event: React.MouseEvent<HTMLButtonElement>) => {
+       const handleSpin = () => {
         setSpinToggle(prevState => !prevState)
       };
- 
- 
+
+      const { data, error, isLoading } = useAddress();
+
+      const createAddressMutation = useCreateAddress()
+      const {register, handleSubmit} = useForm<Address>()
+     
+      if (isLoading) {
+        console.log('Loading...');
+        return <p>Loading...</p>;
+      }
+      if (error) {
+        return <p>Error</p>;
+      }
+
+      console.log('Address:', data);
+
+      
+       const handleCreateAddressSubmit: SubmitHandler<any> = (data,e) =>{
+        e?.preventDefault()
+        createAddressMutation.mutate(data)
+        setAddressPage(!addressPage)
+     }
+
+     const handleAdd = ()=>{
+      setAddressPage(!addressPage)
+     }
+      
    return (
      <div className="last-confirm flex flex-col items-center gap-2">
        <button className="bg-blue-500 text-white p-2 rounded-lg font-semibold" onClick={handleConfirm}>Go Back</button>
        <div>
          <h2 className="font-semibold text-lg text-gray-700">Delivery Adress</h2>
          <div className="text-lg m-1">
-         <p>{address[0].street_name}</p>
-         <p>{address[0].street_address}{address[0].state}</p>
-         <p>{address[0].building_number}{address[0].postcode}</p>
+         <select name="amount" className="text-blue-800">
+          
+          {(data as Address[] | undefined)?.map((adds:Address)=>{
+            return(
+              <option key={adds.id}>{adds.addName}</option>
+            )
+          })}
+          </select>
+           {addressPage && (
+             <form onSubmit={handleSubmit((data, e) => handleCreateAddressSubmit(data, e))}>
+              <div>
+             <input placeholder="name" {...register("addName")} />
+             </div>
+             <div>
+             <input placeholder="street" {...register("street")} />
+             </div>
+             <div>
+             <input placeholder="apartment" {...register("apartment")} />
+             </div>
+             <div>
+             <input placeholder="city" {...register("city")} />
+             </div>
+             <div>
+             <input placeholder="country" {...register("country")} />
+             </div>
+             <button className="bg-orange-400 text-white p-2 rounded-lg font-semibold m-4">Submit</button>
+           </form>
+
+           )}
          </div>
-         <button className="bg-orange-400 text-white p-2 rounded-lg font-semibold m-4">Change Address</button>
+         {!addressPage && (
+         <button onClick={handleAdd} type="submit" className="bg-orange-400 text-white p-2 rounded-lg font-semibold m-4">Add Address</button>)}
+         
        </div>
        <div>
           <h2 className="font-semibold text-lg text-gray-700">Payment Method</h2>

@@ -39,7 +39,6 @@ const ProductItem = ({pro, handleCount}:ProductProps) => {
       <div className="flex flex-col justify-center items-center m-1 p-1 gap-1">
         <h3 className="font-semibold">{product.title}</h3>
         <img src={product.images[imageIndexes[product.id] || 0]} onClick={()=>handleImageClick(product.id)} width="210px"className="cursor-pointer hover:opacity-75"/>
-        <p>{product.description}</p>
        </div>
         
        

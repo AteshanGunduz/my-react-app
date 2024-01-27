@@ -5,11 +5,12 @@ import AddCard from '../components/AddCard';
 
 
 export type Address = {
-  street_name: string;
-  street_address: string;
-  building_number: string;
-  state: string;
-  postcode: string;
+  addName?: string;
+  street?: string;
+  apartment?: string;
+  city?: string;
+  country?: string;
+  id?: string
 }
 
 
@@ -32,6 +33,7 @@ type HomeProps = {
 
 
 const Home = ({products, address}:HomeProps) => {
+  console.log("Home render");
 
       const [pro, setPro] = useState(products)
       const [filter, setFilter] = useState(false)
@@ -101,7 +103,8 @@ const Home = ({products, address}:HomeProps) => {
         } else {
           setCount((prevCount) => prevCount + +value); 
           setProductsIn((prevProductsIn) => {
-            const updatedProductsIn: (Product1 | ProductWithAmount)[] = [...prevProductsIn, { ...filteredProduct, amount: +value } as ProductWithAmount];
+            const updatedProductsIn: (Product1 | ProductWithAmount)[] = 
+            [...prevProductsIn, { ...filteredProduct, amount: +value } as ProductWithAmount];
         
             const totalPrice = updatedProductsIn.reduce(
               (total, product) => total + (product.price) * product.amount,
@@ -113,7 +116,6 @@ const Home = ({products, address}:HomeProps) => {
         return updatedProductsIn
       });
     }
-
       },[pro, productsIn, count, price]);
 
       const addedTotal = price + 5
@@ -259,7 +261,7 @@ const Home = ({products, address}:HomeProps) => {
     )}
     {confirm && (
     <div>
-     <Confirm lastDigits={lastDigits} handleConfirm={handleConfirm} handleAddCard={handleAddCard} productsIn={productsIn} price={price} addedTotal={addedTotal} address={address}/>
+     <Confirm lastDigits={lastDigits} handleConfirm={handleConfirm} handleAddCard={handleAddCard} productsIn={productsIn} price={price} addedTotal={addedTotal}/>
     </div>
     )}
     {cardToggle && (

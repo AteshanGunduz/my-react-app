@@ -1,0 +1,28 @@
+{
+  "address": [
+    {
+      "id": "56cd",
+      "addName": "Choose Your Addrees",
+      "street": "aa",
+      "apartment": "aa",
+      "city": "aa",
+      "country": "aa"
+    },
+    {
+      "id": "5062",
+      "addName": "Ateshan Gunduz",
+      "street": "Besiktas",
+      "apartment": "Gül",
+      "city": "Istanbul",
+      "country": "Turkey"
+    },
+    {
+      "id": "8640",
+      "addName": "Ayse",
+      "street": "Bahcesehir",
+      "apartment": "Aparatman",
+      "city": "Istanbul",
+      "country": "Turkey"
+    }
+  ]
+}
