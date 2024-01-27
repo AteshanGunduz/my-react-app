@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Product1 } from "../pages/Home"
 import { Address } from "../pages/Home"
-import { useAddress, useCreateAddress } from "../services/queries"
+// import { useAddress, useCreateAddress } from "../services/queries"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 type ConfirmProps = {
@@ -27,27 +27,27 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
         setSpinToggle(prevState => !prevState)
       };
 
-      const { data, error, isLoading } = useAddress();
+      // const { data, error, isLoading } = useAddress();
 
-      const createAddressMutation = useCreateAddress()
+      // const createAddressMutation = useCreateAddress()
       const {register, handleSubmit} = useForm<Address>()
      
-      if (isLoading) {
-        console.log('Loading...');
-        return <p>Loading...</p>;
-      }
-      if (error) {
-        return <p>Error</p>;
-      }
+      // if (isLoading) {
+      //   console.log('Loading...');
+      //   return <p>Loading...</p>;
+      // }
+      // if (error) {
+      //   return <p>Error</p>;
+      // }
 
-      console.log('Address:', data);
+    //   console.log('Address:', data);
 
       
-       const handleCreateAddressSubmit: SubmitHandler<any> = (data,e) =>{
-        e?.preventDefault()
-        createAddressMutation.mutate(data)
-        setAddressPage(!addressPage)
-     }
+    //    const handleCreateAddressSubmit: SubmitHandler<any> = (data,e) =>{
+    //     e?.preventDefault()
+    //     createAddressMutation.mutate(data)
+    //     setAddressPage(!addressPage)
+    //  }
 
      const handleAdd = ()=>{
       setAddressPage(!addressPage)
@@ -59,16 +59,17 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
        <div>
          <h2 className="font-semibold text-lg text-gray-700">Delivery Adress</h2>
          <div className="text-lg m-1">
-         <select name="amount" className="text-blue-800">
+         {/* <select name="amount" className="text-blue-800
           
           {(data as Address[] | undefined)?.map((adds:Address)=>{
             return(
               <option key={adds.id}>{adds.addName}</option>
             )
           })}
-          </select>
+          </select> */}
+           {/* onSubmit={handleSubmit((data, e) => handleCreateAddressSubmit(data, e))} */}
            {addressPage && (
-             <form onSubmit={handleSubmit((data, e) => handleCreateAddressSubmit(data, e))}>
+             <div>
               <div>
              <input placeholder="name" {...register("addName")} />
              </div>
@@ -85,7 +86,7 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
              <input placeholder="country" {...register("country")} />
              </div>
              <button className="bg-orange-400 text-white p-2 rounded-lg font-semibold m-4">Submit</button>
-           </form>
+           </div>
 
            )}
          </div>
