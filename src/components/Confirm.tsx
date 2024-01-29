@@ -18,6 +18,9 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
      console.log("Confirm Rendered");
     const [spinToggle, setSpinToggle] = useState<boolean>(false)
     const [addressPage, setAddressPage] = useState<boolean>(false)
+    const [addressDisplay, setAddressDisplay] = useState<string>("")
+    const [addressName, setAddressName] = useState<string>("")
+
 
     const handleAddClick = ()=>{
         handleAddCard("")
@@ -43,21 +46,27 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
     //   console.log('Address:', data);
 
       
-    //    const handleCreateAddressSubmit: SubmitHandler<any> = (data,e) =>{
-    //     e?.preventDefault()
-    //     createAddressMutation.mutate(data)
-    //     setAddressPage(!addressPage)
-    //  }
+       const handleCreateAddressSubmit: SubmitHandler<any> = () =>{
+        setAddressDisplay(addressName)
+        setAddressPage(!addressPage)
+     }
 
      const handleAdd = ()=>{
       setAddressPage(!addressPage)
      }
+
+    
       
    return (
      <div className="last-confirm flex flex-col items-center gap-2">
        <button className="bg-blue-500 text-white p-2 rounded-lg font-semibold" onClick={handleConfirm}>Go Back</button>
        <div>
          <h2 className="font-semibold text-lg text-gray-700">Delivery Adress</h2>
+         
+
+         <div className="m-1 font-semibold text-blue-600">Delivered to: {addressDisplay}</div> 
+        
+        
          <div className="text-lg m-1">
          {/* <select name="amount" className="text-blue-800
           
@@ -69,9 +78,9 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
           </select> */}
            {/* onSubmit={handleSubmit((data, e) => handleCreateAddressSubmit(data, e))} */}
            {addressPage && (
-             <div>
+             <form onSubmit={handleSubmit(handleCreateAddressSubmit)}>
               <div>
-             <input placeholder="name" {...register("addName")} />
+             <input placeholder="name" onChange={(e)=>setAddressName(e.target.value)} />
              </div>
              <div>
              <input placeholder="street" {...register("street")} />
@@ -86,7 +95,7 @@ const Confirm = ({handleConfirm, productsIn, price, addedTotal, handleAddCard, l
              <input placeholder="country" {...register("country")} />
              </div>
              <button className="bg-orange-400 text-white p-2 rounded-lg font-semibold m-4">Submit</button>
-           </div>
+           </form>
 
            )}
          </div>
